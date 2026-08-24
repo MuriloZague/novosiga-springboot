@@ -34,7 +34,7 @@ public class AlunoController {
     public String listar(Model model) {
         List<Aluno> alunos = alunoService.findAll();
         model.addAttribute("alunos", alunos);
-        return "aluno/listaAlunos";
+        return "aluno/listarAlunos";
     }
     
     //Metodo para abrir o formulario para cadastro de aluno
