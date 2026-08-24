@@ -1,0 +1,9 @@
+package com.novosiga.novosiga.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.novosiga.novosiga.model.Aluno;
+
+public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
+    
+}
