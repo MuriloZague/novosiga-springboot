@@ -1,41 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulario de Aluno</title>
-</head>
-<body>
-    <h1 style="text-align: center;">Formulario de Alunos</h1>
-    <form th:action="@{/alunos/salvar}" method="post" th:object="${aluno}">
-        <input type="hidden" name="idAluno" th:field="*{idAluno}">
+  </head>
+  <body>
+    <h1 style="text-align: center">Formulario de Alunos</h1>
+    <form
+      th:action="@{/alunos/salvar}"
+      method="post"
+      th:object="${aluno}"
+      enctype="multipart/form-data"
+    >
+      <input type="hidden" name="idAluno" th:field="*{idAluno}" />
 
-        <label for="nomeAluno">Nome:</label>
-        <input type="text" name="nomeAluno" th:field="*{nomeAluno}">
-        <br/><br/>
-        <label for="enderecoAluno">Endereco:</label>
-        <input type="text" name="enderecoAluno" th:field="*{enderecoAluno}">
-        <br/><br/>
-        <label for="bairroAluno">Bairro:</label>
-        <input type="text" name="bairroAluno" th:field="*{bairroAluno}">
-        <br/><br/>
-        <label for="cidadeAluno">Cidade:</label>
-        <input type="text" name="cidadeAluno" th:field="*{cidadeAluno}" maxlength="30">
-        <br/><br/>
-        <label for="estadoAluno">Estado (UF):</label>
-        <input type="text" name="estadoAluno" th:field="*{estadoAluno}" maxlength="2">
-        <br/><br/>
-        <label for="cepAluno">CEP:</label>
-        <input type="text" name="cepAluno" th:field="*{cepAluno}" maxlength="8">
-        <br/><br/>
-        <label for="telefoneAluno">Telefone:</label>
-        <input type="text" name="telefoneAluno" th:field="*{telefoneAluno}" maxlength="11">
-        <br/><br/>
-        <label for="cpfAluno">CPF:</label>
-        <input type="text" name="cpfAluno" th:field="*{cpfAluno}" maxlength="11">
-        <br/><br/>
+      <label for="nomeAluno">Nome:</label>
+      <input type="text" name="nomeAluno" th:field="*{nomeAluno}" />
+      <br /><br />
+      <label for="enderecoAluno">Endereco:</label>
+      <input type="text" name="enderecoAluno" th:field="*{enderecoAluno}" />
+      <br /><br />
+      <label for="bairroAluno">Bairro:</label>
+      <input type="text" name="bairroAluno" th:field="*{bairroAluno}" />
+      <br /><br />
+      <label for="cidadeAluno">Cidade:</label>
+      <input
+        type="text"
+        name="cidadeAluno"
+        th:field="*{cidadeAluno}"
+        maxlength="30"
+      />
+      <br /><br />
+      <label for="estadoAluno">Estado (UF):</label>
+      <input
+        type="text"
+        name="estadoAluno"
+        th:field="*{estadoAluno}"
+        maxlength="2"
+      />
+      <br /><br />
+      <label for="cepAluno">CEP:</label>
+      <input type="text" name="cepAluno" th:field="*{cepAluno}" maxlength="8" />
+      <br /><br />
+      <label for="telefoneAluno">Telefone:</label>
+      <input
+        type="text"
+        name="telefoneAluno"
+        th:field="*{telefoneAluno}"
+        maxlength="11"
+      />
+      <br /><br />
+      <label for="cpfAluno">CPF:</label>
+      <input
+        type="text"
+        name="cpfAluno"
+        th:field="*{cpfAluno}"
+        maxlength="11"
+      />
+      <br /><br />
+      <label>Foto:</label>
+      <input type="file" name="foto" accept="image/*" />
+      <br /><br />
 
-        <input type="submit" value="Salvar aluno">
+      <input type="submit" value="Salvar aluno" />
     </form>
-</body>
+  </body>
 </html>

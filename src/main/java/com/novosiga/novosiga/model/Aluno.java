@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,5 +45,11 @@ public class Aluno {
 
     @Column(nullable = false, length = 11)
     private String cpfAluno;
+
+    @Lob
+    private byte[] fotoAluno;
+
+    @Column(length = 20)
+    private String tipoFoto;
 
 }

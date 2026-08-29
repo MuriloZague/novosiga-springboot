@@ -14,6 +14,7 @@
         <th colspan="10">Lista de Alunos</th>
       </tr>
       <tr>
+        <th>Foto</th>
         <th>Nome</th>
         <th>Endereço</th>
         <th>Bairro</th>
@@ -25,6 +26,14 @@
         <th colspan="2">Ações</th>
       </tr>
       <tr th:each="aluno : ${alunos}">
+        <td>
+          <img
+            th:if="${aluno.fotoAluno != null}"
+            th:src="@{/alunos/foto/{id}(id=${aluno.idAluno})}"
+            width="60"
+            height="70"
+          />
+        </td>
         <td th:text="${aluno.nomeAluno}"></td>
         <td th:text="${aluno.enderecoAluno}"></td>
         <td th:text="${aluno.bairroAluno}"></td>
@@ -33,6 +42,7 @@
         <td th:text="${aluno.cepAluno}"></td>
         <td th:text="${aluno.telefoneAluno}"></td>
         <td th:text="${aluno.cpfAluno}"></td>
+
         <td>
           <a th:href="@{/alunos/editar/{id}(id=${aluno.idAluno})}">Editar</a>
           <a th:href="@{/alunos/excluir/{id}(id=${aluno.idAluno})}">Excluir</a>
