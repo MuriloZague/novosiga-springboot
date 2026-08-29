@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disciplinas — NOVO SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand"><span class="logo">🎓</span> NOVO SIGA</div>
+      <nav>
+        <a href="/novosiga">Início</a>
+        <a href="/alunos/listar">Alunos</a>
+        <a href="/cursos/listar">Cursos</a>
+        <a href="/disciplinas/listar">Disciplinas</a>
+        <a href="/professores/listar">Professores</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Disciplinas</h1>
+          <p>Disciplinas cadastradas no sistema.</p>
+        </div>
+        <a class="btn btn-primary" href="/disciplinas/criar">+ Nova Disciplina</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Sigla</th>
+              <th>Carga Horária</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="disciplina : ${disciplinas}">
+              <td th:text="${disciplina.nomeDisciplina}"></td>
+              <td th:text="${disciplina.siglaDisciplina}"></td>
+              <td th:text="${disciplina.cargHorariaDisciplina}"></td>
+              <td>
+                <div class="table-actions">
+                  <a
+                    class="btn btn-ghost btn-sm"
+                    th:href="@{/disciplinas/editar/{id}(id=${disciplina.idDisciplina})}"
+                    >Editar</a
+                  >
+                  <a
+                    class="btn btn-danger btn-sm"
+                    th:href="@{/disciplinas/excluir/{id}(id=${disciplina.idDisciplina})}"
+                    onclick="return confirm('Deseja realmente excluir esta disciplina?')"
+                    >Excluir</a
+                  >
+                </div>
+              </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(disciplinas)}">
+              <td colspan="4" class="empty-state">
+                Nenhuma disciplina cadastrada ainda.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

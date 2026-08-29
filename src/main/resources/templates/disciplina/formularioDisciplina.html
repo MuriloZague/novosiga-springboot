@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Disciplina — NOVO SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand"><span class="logo">🎓</span> NOVO SIGA</div>
+      <nav>
+        <a href="/novosiga">Início</a>
+        <a href="/alunos/listar">Alunos</a>
+        <a href="/cursos/listar">Cursos</a>
+        <a href="/disciplinas/listar">Disciplinas</a>
+        <a href="/professores/listar">Professores</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Cadastro de Disciplina</h1>
+          <p>Preencha os dados da disciplina.</p>
+        </div>
+        <a class="btn btn-ghost" href="/disciplinas/listar">← Voltar</a>
+      </div>
+
+      <div class="form-card">
+        <form th:action="@{/disciplinas/salvar}" method="post" th:object="${disciplina}">
+          <input type="hidden" name="idDisciplina" th:field="*{idDisciplina}" />
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="nomeDisciplina">Nome da Disciplina</label>
+              <input type="text" id="nomeDisciplina" th:field="*{nomeDisciplina}" maxlength="50" required />
+            </div>
+            <div class="form-group">
+              <label for="siglaDisciplina">Sigla</label>
+              <input type="text" id="siglaDisciplina" th:field="*{siglaDisciplina}" maxlength="11" required />
+            </div>
+            <div class="form-group">
+              <label for="cargHorariaDisciplina">Carga Horária</label>
+              <input type="text" id="cargHorariaDisciplina" th:field="*{cargHorariaDisciplina}" maxlength="9" required />
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <a class="btn btn-ghost" href="/disciplinas/listar">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar disciplina</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

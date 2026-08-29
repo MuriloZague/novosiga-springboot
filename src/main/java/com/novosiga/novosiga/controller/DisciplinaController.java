@@ -52,4 +52,12 @@ public class DisciplinaController {
         return "redirect:/disciplinas/listar";
     }
 
+    //Método para abrir o formulário de edição de disciplina
+    @GetMapping("/editar/{id}")
+    public String editarForm(@PathVariable Integer id, Model model) {
+        Disciplina disciplina = disciplinaService.findById(id);
+        model.addAttribute("disciplina", disciplina);
+        return "disciplina/formularioDisciplina";
+    }
+
 }

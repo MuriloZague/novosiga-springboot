@@ -1,69 +1,86 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulario de Aluno</title>
+    <title>Cadastro de Aluno — NOVO SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
   </head>
   <body>
-    <h1 style="text-align: center">Formulario de Alunos</h1>
-    <form
-      th:action="@{/alunos/salvar}"
-      method="post"
-      th:object="${aluno}"
-      enctype="multipart/form-data"
-    >
-      <input type="hidden" name="idAluno" th:field="*{idAluno}" />
+    <header class="navbar">
+      <div class="brand"><span class="logo">🎓</span> NOVO SIGA</div>
+      <nav>
+        <a href="/novosiga">Início</a>
+        <a href="/alunos/listar">Alunos</a>
+        <a href="/cursos/listar">Cursos</a>
+        <a href="/disciplinas/listar">Disciplinas</a>
+        <a href="/professores/listar">Professores</a>
+      </nav>
+    </header>
 
-      <label for="nomeAluno">Nome:</label>
-      <input type="text" name="nomeAluno" th:field="*{nomeAluno}" />
-      <br /><br />
-      <label for="enderecoAluno">Endereco:</label>
-      <input type="text" name="enderecoAluno" th:field="*{enderecoAluno}" />
-      <br /><br />
-      <label for="bairroAluno">Bairro:</label>
-      <input type="text" name="bairroAluno" th:field="*{bairroAluno}" />
-      <br /><br />
-      <label for="cidadeAluno">Cidade:</label>
-      <input
-        type="text"
-        name="cidadeAluno"
-        th:field="*{cidadeAluno}"
-        maxlength="30"
-      />
-      <br /><br />
-      <label for="estadoAluno">Estado (UF):</label>
-      <input
-        type="text"
-        name="estadoAluno"
-        th:field="*{estadoAluno}"
-        maxlength="2"
-      />
-      <br /><br />
-      <label for="cepAluno">CEP:</label>
-      <input type="text" name="cepAluno" th:field="*{cepAluno}" maxlength="8" />
-      <br /><br />
-      <label for="telefoneAluno">Telefone:</label>
-      <input
-        type="text"
-        name="telefoneAluno"
-        th:field="*{telefoneAluno}"
-        maxlength="11"
-      />
-      <br /><br />
-      <label for="cpfAluno">CPF:</label>
-      <input
-        type="text"
-        name="cpfAluno"
-        th:field="*{cpfAluno}"
-        maxlength="11"
-      />
-      <br /><br />
-      <label>Foto:</label>
-      <input type="file" name="foto" accept="image/*" />
-      <br /><br />
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Cadastro de Aluno</h1>
+          <p>Preencha os dados do estudante.</p>
+        </div>
+        <a class="btn btn-ghost" href="/alunos/listar">← Voltar</a>
+      </div>
 
-      <input type="submit" value="Salvar aluno" />
-    </form>
+      <div class="form-card">
+        <form
+          th:action="@{/alunos/salvar}"
+          method="post"
+          th:object="${aluno}"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" name="idAluno" th:field="*{idAluno}" />
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="nomeAluno">Nome</label>
+              <input type="text" id="nomeAluno" th:field="*{nomeAluno}" maxlength="50" required />
+            </div>
+            <div class="form-group full">
+              <label for="enderecoAluno">Endereço</label>
+              <input type="text" id="enderecoAluno" th:field="*{enderecoAluno}" maxlength="40" required />
+            </div>
+            <div class="form-group">
+              <label for="bairroAluno">Bairro</label>
+              <input type="text" id="bairroAluno" th:field="*{bairroAluno}" maxlength="40" required />
+            </div>
+            <div class="form-group">
+              <label for="cidadeAluno">Cidade</label>
+              <input type="text" id="cidadeAluno" th:field="*{cidadeAluno}" maxlength="30" required />
+            </div>
+            <div class="form-group">
+              <label for="estadoAluno">Estado (UF)</label>
+              <input type="text" id="estadoAluno" th:field="*{estadoAluno}" maxlength="2" required />
+            </div>
+            <div class="form-group">
+              <label for="cepAluno">CEP</label>
+              <input type="text" id="cepAluno" th:field="*{cepAluno}" maxlength="8" required />
+            </div>
+            <div class="form-group">
+              <label for="telefoneAluno">Telefone</label>
+              <input type="text" id="telefoneAluno" th:field="*{telefoneAluno}" maxlength="11" required />
+            </div>
+            <div class="form-group">
+              <label for="cpfAluno">CPF</label>
+              <input type="text" id="cpfAluno" th:field="*{cpfAluno}" maxlength="11" required />
+            </div>
+            <div class="form-group full">
+              <label for="foto">Foto</label>
+              <input type="file" id="foto" name="foto" accept="image/*" />
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <a class="btn btn-ghost" href="/alunos/listar">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar aluno</button>
+          </div>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

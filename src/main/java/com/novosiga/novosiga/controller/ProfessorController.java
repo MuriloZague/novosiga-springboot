@@ -52,4 +52,12 @@ public class ProfessorController {
         return "redirect:/professores/listar";
     }
 
+    //Método para abrir o formulário de edição de professor
+    @GetMapping("/editar/{id}")
+    public String editarForm(@PathVariable Integer id, Model model) {
+        Professor professor = professorService.findById(id);
+        model.addAttribute("professor", professor);
+        return "professor/formularioProfessor";
+    }
+
 }

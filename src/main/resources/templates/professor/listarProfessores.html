@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professores — NOVO SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand"><span class="logo">🎓</span> NOVO SIGA</div>
+      <nav>
+        <a href="/novosiga">Início</a>
+        <a href="/alunos/listar">Alunos</a>
+        <a href="/cursos/listar">Cursos</a>
+        <a href="/disciplinas/listar">Disciplinas</a>
+        <a href="/professores/listar">Professores</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Professores</h1>
+          <p>Corpo docente cadastrado no sistema.</p>
+        </div>
+        <a class="btn btn-primary" href="/professores/criar">+ Novo Professor</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>RG</th>
+              <th>Telefone</th>
+              <th>Endereço</th>
+              <th>Graduação</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="professor : ${professores}">
+              <td th:text="${professor.nomeProfessor}"></td>
+              <td th:text="${professor.cpfProfessor}"></td>
+              <td th:text="${professor.rgProfessor}"></td>
+              <td th:text="${professor.telefoneProfessor}"></td>
+              <td th:text="${professor.enderecoProfessor}"></td>
+              <td th:text="${professor.graduacaoProfessor}"></td>
+              <td>
+                <div class="table-actions">
+                  <a
+                    class="btn btn-ghost btn-sm"
+                    th:href="@{/professores/editar/{id}(id=${professor.idProfessor})}"
+                    >Editar</a
+                  >
+                  <a
+                    class="btn btn-danger btn-sm"
+                    th:href="@{/professores/excluir/{id}(id=${professor.idProfessor})}"
+                    onclick="return confirm('Deseja realmente excluir este professor?')"
+                    >Excluir</a
+                  >
+                </div>
+              </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(professores)}">
+              <td colspan="7" class="empty-state">
+                Nenhum professor cadastrado ainda.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

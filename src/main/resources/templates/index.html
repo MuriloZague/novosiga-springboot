@@ -1,14 +1,70 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVO SIGA</title>
-</head>
-<body>
-    <h1 style="text-align: center;">Sistema NOVO SIGA</h1>
-    <h3 style="text-align: center;">
-        <a href="/alunos/listar">Gerenciar Alunos</a>
-    </h3>
-</body>
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVO SIGA — Sistema de Gestão Acadêmica</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand"><span class="logo">🎓</span> NOVO SIGA</div>
+      <nav>
+        <a href="/novosiga">Início</a>
+        <a href="/alunos/listar">Alunos</a>
+        <a href="/cursos/listar">Cursos</a>
+        <a href="/disciplinas/listar">Disciplinas</a>
+        <a href="/professores/listar">Professores</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>Sistema de Gestão Acadêmica</h1>
+        <p>Gerencie alunos, cursos, disciplinas e professores em um só lugar.</p>
+      </section>
+
+      <section class="card-grid">
+        <article class="card">
+          <span class="icon">👨‍🎓</span>
+          <h2>Alunos</h2>
+          <p>Cadastre, consulte e mantenha os dados dos estudantes.</p>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="/alunos/listar">Gerenciar</a>
+            <a class="btn btn-outline" href="/alunos/criar">Novo</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="icon">📚</span>
+          <h2>Cursos</h2>
+          <p>Organize os cursos oferecidos e suas cargas horárias.</p>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="/cursos/listar">Gerenciar</a>
+            <a class="btn btn-outline" href="/cursos/criar">Novo</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="icon">📖</span>
+          <h2>Disciplinas</h2>
+          <p>Administre as disciplinas e suas respectivas siglas.</p>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="/disciplinas/listar">Gerenciar</a>
+            <a class="btn btn-outline" href="/disciplinas/criar">Nova</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="icon">👩‍🏫</span>
+          <h2>Professores</h2>
+          <p>Controle o corpo docente e suas informações de contato.</p>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="/professores/listar">Gerenciar</a>
+            <a class="btn btn-outline" href="/professores/criar">Novo</a>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
 </html>

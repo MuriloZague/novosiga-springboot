@@ -52,4 +52,12 @@ public class CursoController {
         return "redirect:/cursos/listar";
     }
 
+    //Método para abrir o formulário de edição de curso
+    @GetMapping("/editar/{id}")
+    public String editarForm(@PathVariable Integer id, Model model) {
+        Curso curso = cursoService.findById(id);
+        model.addAttribute("curso", curso);
+        return "curso/formularioCurso";
+    }
+
 }
