@@ -34,6 +34,12 @@ public class AlunoController {
             if (!foto.isEmpty()) {
                 aluno.setFotoAluno(foto.getBytes());
                 aluno.setTipoFoto(foto.getContentType());
+            } else if(aluno.getIdAluno() != null) {
+                Aluno alunoExistente = alunoService.findById(aluno.getIdAluno());
+                if(alunoExistente != null){
+                    aluno.setFotoAluno(alunoExistente.getFotoAluno());
+                    aluno.setTipoFoto(alunoExistente.getTipoFoto());
+                }
             }
             alunoService.save(aluno);
         } catch (Exception e) {
