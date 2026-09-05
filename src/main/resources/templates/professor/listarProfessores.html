@@ -31,6 +31,7 @@
         <table>
           <thead>
             <tr>
+              <th>Foto</th>
               <th>Nome</th>
               <th>CPF</th>
               <th>RG</th>
@@ -42,6 +43,19 @@
           </thead>
           <tbody>
             <tr th:each="professor : ${professores}">
+              <td>
+                <img
+                  class="avatar"
+                  th:if="${professor.fotoProfessor != null}"
+                  th:src="@{/professores/foto/{id}(id=${professor.idProfessor})}"
+                  alt="Foto"
+                />
+                <span
+                  class="avatar-placeholder"
+                  th:if="${professor.fotoProfessor == null}"
+                  th:text="${#strings.substring(professor.nomeProfessor,0,1)}"
+                ></span>
+              </td>
               <td th:text="${professor.nomeProfessor}"></td>
               <td th:text="${professor.cpfProfessor}"></td>
               <td th:text="${professor.rgProfessor}"></td>
