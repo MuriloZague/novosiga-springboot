@@ -8,7 +8,7 @@
   </head>
   <body>
     <header class="navbar">
-      <div class="brand"><span class="logo">🎓</span> NOVO SIGA</div>
+      <div class="brand"><a href="/novosiga">NOVO SIGA</a></div>
       <nav>
         <a href="/novosiga">Início</a>
         <a href="/alunos/listar">Alunos</a>
@@ -52,7 +52,9 @@
                   <a
                     class="btn btn-danger btn-sm"
                     th:href="@{/cursos/excluir/{id}(id=${curso.idCurso})}"
-                    onclick="return confirm('Deseja realmente excluir este curso?')"
+                    onclick="
+                      return confirm('Deseja realmente excluir este curso?');
+                    "
                     >Excluir</a
                   >
                 </div>

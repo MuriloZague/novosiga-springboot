@@ -8,7 +8,7 @@
   </head>
   <body>
     <header class="navbar">
-      <div class="brand"><span class="logo">🎓</span> NOVO SIGA</div>
+      <div class="brand"><a href="/novosiga">NOVO SIGA</a></div>
       <nav>
         <a href="/novosiga">Início</a>
         <a href="/alunos/listar">Alunos</a>
@@ -34,15 +34,33 @@
           <div class="form-grid">
             <div class="form-group full">
               <label for="nomeCurso">Nome do Curso</label>
-              <input type="text" id="nomeCurso" th:field="*{nomeCurso}" maxlength="20" required />
+              <input
+                type="text"
+                id="nomeCurso"
+                th:field="*{nomeCurso}"
+                maxlength="20"
+                required
+              />
             </div>
             <div class="form-group full">
               <label for="descricaoCurso">Descrição</label>
-              <textarea id="descricaoCurso" th:field="*{descricaoCurso}" maxlength="80" rows="3" required></textarea>
+              <textarea
+                id="descricaoCurso"
+                th:field="*{descricaoCurso}"
+                maxlength="80"
+                rows="3"
+                required
+              ></textarea>
             </div>
             <div class="form-group">
               <label for="cargaHorariaCurso">Carga Horária</label>
-              <input type="text" id="cargaHorariaCurso" th:field="*{cargaHorariaCurso}" maxlength="10" required />
+              <input
+                type="text"
+                id="cargaHorariaCurso"
+                th:field="*{cargaHorariaCurso}"
+                maxlength="10"
+                required
+              />
             </div>
           </div>
 

@@ -8,7 +8,7 @@
   </head>
   <body>
     <header class="navbar">
-      <div class="brand"><span class="logo">🎓</span> NOVO SIGA</div>
+      <div class="brand"><a href="/novosiga">NOVO SIGA</a></div>
       <nav>
         <a href="/novosiga">Início</a>
         <a href="/alunos/listar">Alunos</a>
@@ -24,7 +24,9 @@
           <h1>Disciplinas</h1>
           <p>Disciplinas cadastradas no sistema.</p>
         </div>
-        <a class="btn btn-primary" href="/disciplinas/criar">+ Nova Disciplina</a>
+        <a class="btn btn-primary" href="/disciplinas/criar"
+          >+ Nova Disciplina</a
+        >
       </div>
 
       <div class="table-wrap">
@@ -52,7 +54,11 @@
                   <a
                     class="btn btn-danger btn-sm"
                     th:href="@{/disciplinas/excluir/{id}(id=${disciplina.idDisciplina})}"
-                    onclick="return confirm('Deseja realmente excluir esta disciplina?')"
+                    onclick="
+                      return confirm(
+                        'Deseja realmente excluir esta disciplina?',
+                      );
+                    "
                     >Excluir</a
                   >
                 </div>
