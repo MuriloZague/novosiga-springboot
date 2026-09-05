@@ -40,6 +40,7 @@
               <th>CEP</th>
               <th>Telefone</th>
               <th>CPF</th>
+              <th>Curso</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -66,8 +67,9 @@
               <td th:text="${aluno.cepAluno}"></td>
               <td th:text="${aluno.telefoneAluno}"></td>
               <td th:text="${aluno.cpfAluno}"></td>
+              <td th:text="${aluno.curso.nomeCurso}"></td>
               <td>
-                <div class="table-actions">
+                <div>
                   <a
                     class="btn btn-ghost btn-sm"
                     th:href="@{/alunos/editar/{id}(id=${aluno.idAluno})}"

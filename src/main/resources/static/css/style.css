@@ -247,7 +247,7 @@ a {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  overflow: hidden;
+  overflow-x: auto;
 }
 
 table {
@@ -283,6 +283,7 @@ tbody tr:hover {
 .table-actions {
   display: flex;
   gap: 8px;
+  white-space: nowrap;
 }
 
 .avatar {
