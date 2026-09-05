@@ -118,6 +118,15 @@
               />
             </div>
             <div class="form-group full">
+              <label for="idCurso">Curso</label>
+              <select th:field="*{curso}" >
+                <option value="" selected>Escolha um curso</option>
+                <option th:each="curso : ${cursos}" th:text="${curso.nomeCurso}" th:value="${curso.idCurso}">
+
+                </option>
+              </select>
+            </div>
+            <div class="form-group full">
               <label for="foto">Foto</label>
               <input type="file" id="foto" name="foto" accept="image/*" />
             </div>

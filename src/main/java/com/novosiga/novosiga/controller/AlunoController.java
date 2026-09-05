@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.novosiga.novosiga.model.Aluno;
+import com.novosiga.novosiga.model.Curso;
 import com.novosiga.novosiga.service.AlunoService;
+import com.novosiga.novosiga.service.CursoService;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +28,9 @@ public class AlunoController {
     // Injeção de dependencias da service de alunos
     @Autowired
     private AlunoService alunoService;
+
+    @Autowired 
+    private CursoService cursoService;
 
     // Metodo para salvar um aluno
     @PostMapping("/salvar")
@@ -60,6 +65,8 @@ public class AlunoController {
     @GetMapping("/criar")
     public String criarForm(Model model) {
         model.addAttribute("aluno", new Aluno());
+        List<Curso> cursos = cursoService.findAll();
+        model.addAttribute("cursos", cursos);
         return "aluno/formularioAluno";
     }
 
@@ -75,6 +82,8 @@ public class AlunoController {
     public String editarForm(@PathVariable Integer id, Model model) {
         Aluno aluno = alunoService.findById(id);
         model.addAttribute("aluno", aluno);
+        List<Curso> cursos = cursoService.findAll();
+        model.addAttribute("cursos", cursos);
         return "aluno/formularioAluno";
     }
 
