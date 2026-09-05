@@ -36,6 +36,8 @@
               <th>Nome</th>
               <th>Sigla</th>
               <th>Carga Horária</th>
+              <th>Professor</th>
+              <th>Curso</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -44,6 +46,8 @@
               <td th:text="${disciplina.nomeDisciplina}"></td>
               <td th:text="${disciplina.siglaDisciplina}"></td>
               <td th:text="${disciplina.cargHorariaDisciplina}"></td>
+              <td th:text="${disciplina.professor.nomeProfessor}"></td>
+              <td th:text="${disciplina.curso.nomeCurso}"></td>
               <td>
                 <div class="table-actions">
                   <a
