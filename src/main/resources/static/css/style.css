@@ -381,3 +381,46 @@ tbody tr:hover {
     gap: 12px;
   }
 }
+
+
+
+
+/* Agrupe o select junto com o input nas regras que você já tem */
+.form-group input,
+.form-group select {
+  width: 100%;
+  /* Mantenha aqui os seus paddings, borders, border-radius e fontes existentes */
+}
+
+/* Estilo isolado e forçado para os Selects */
+.form-group select {
+  width: 100%;
+  padding: 10px 14px; /* Ajuste para bater com a altura dos seus inputs */
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1e293b; 
+  background-color: #f8fafc; /* Fundo levemente acinzentado/branco da imagem */
+  border: 1px solid #e2e8f0; /* Borda cinza clara idêntica à dos inputs */
+  border-radius: 8px; /* Arredondamento visível na imagem */
+  box-sizing: border-box;
+
+  /* Remove o estilo padrão do navegador */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Adiciona a setinha customizada moderna */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23333' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem; /* Evita que o texto encoste na seta */
+  cursor: pointer;
+}
+
+/* Efeito ao clicar no select (combinando com a cor do seu botão roxo/azul) */
+.form-group select:focus {
+  outline: none;
+  border-color: #564be6; /* Cor aproximada do seu botão 'Salvar disciplina' */
+  box-shadow: 0 0 0 3px rgba(86, 75, 230, 0.15);
+}

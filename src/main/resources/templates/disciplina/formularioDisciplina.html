@@ -67,21 +67,19 @@
               />
             </div>
             <div class="form-group full">
-              <label for="idProfessor">Professor</label>
-              <select th:field="*{professor}" >
-                <option value="" selected>Escolha um professor</option>
-                <option th:each="professor : ${professores}" th:text="${professor.nomeProfessor}" th:value="${professor.idProfessor}">
-
-                </option>
+              <!-- Label corrigida para bater com o field -->
+              <label for="professor">Professor</label>
+              <select th:field="*{professor}" id="professor" required>
+                <option value="" disabled selected>Escolha um professor</option>
+                <option th:each="professor : ${professores}" th:text="${professor.nomeProfessor}" th:value="${professor.idProfessor}"></option>
               </select>
             </div>
             <div class="form-group full">
-              <label for="idCurso">Curso</label>
-              <select th:field="*{curso}" >
-                <option value="" selected>Escolha um curso</option>
-                <option th:each="curso : ${cursos}" th:text="${curso.nomeCurso}" th:value="${curso.idCurso}">
-
-                </option>
+              <!-- Label corrigida para bater com o field -->
+              <label for="curso">Curso</label>
+              <select th:field="*{curso}" id="curso" required>
+                <option value="" disabled selected>Escolha um curso</option>
+                <option th:each="curso : ${cursos}" th:text="${curso.nomeCurso}" th:value="${curso.idCurso}"></option>
               </select>
             </div>
           </div>
