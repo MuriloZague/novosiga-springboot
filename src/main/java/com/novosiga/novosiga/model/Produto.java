@@ -1,11 +1,14 @@
 package com.novosiga.novosiga.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,4 +43,9 @@ public class Produto {
     @Column(length = 20)
     private String tipoFoto;
 
+    //Um produto pode aparecer em vários itens de pedidos
+    //Isso representa o lado 1 do relacionamento de 1:N com ItemDoPedido
+    @OneToMany(mappedBy = "produto")
+    private List<ItemDoPedido> itens;
+    
 }
