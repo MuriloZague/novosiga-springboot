@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Produto — NOVO SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand"><a href="/novosiga">NOVO SIGA</a></div>
+      <nav>
+        <a href="/novosiga">Início</a>
+        <a href="/alunos/listar">Alunos</a>
+        <a href="/cursos/listar">Cursos</a>
+        <a href="/disciplinas/listar">Disciplinas</a>
+        <a href="/professores/listar">Professores</a>
+        <a href="/produtos/listar">Produtos</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Cadastro de Produto</h1>
+          <p>Preencha os dados do produto.</p>
+        </div>
+        <a class="btn btn-ghost" href="/produtos/listar">← Voltar</a>
+      </div>
+
+      <div class="form-card">
+        <form
+          th:action="@{/produtos/salvar}"
+          method="post"
+          th:object="${produto}"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" name="idProduto" th:field="*{idProduto}" />
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="descricaoProduto">Descrição</label>
+              <input
+                type="text"
+                id="descricaoProduto"
+                th:field="*{descricaoProduto}"
+                maxlength="67"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="marcaProduto">Marca</label>
+              <input
+                type="text"
+                id="marcaProduto"
+                th:field="*{marcaProduto}"
+                maxlength="20"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="modeloProduto">Modelo</label>
+              <input
+                type="text"
+                id="modeloProduto"
+                th:field="*{modeloProduto}"
+                maxlength="40"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="valorProduto">Valor</label>
+              <input
+                type="text"
+                id="valorProduto"
+                th:field="*{valorProduto}"
+                maxlength="10"
+                required
+              />
+            </div>
+            <div class="form-group full">
+              <label for="foto">Foto</label>
+              <input type="file" id="foto" name="foto" accept="image/*" />
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <a class="btn btn-ghost" href="/produtos/listar">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar produto</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

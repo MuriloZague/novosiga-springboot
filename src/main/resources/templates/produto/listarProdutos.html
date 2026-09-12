@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos — NOVO SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand"><a href="/novosiga">NOVO SIGA</a></div>
+      <nav>
+        <a href="/novosiga">Início</a>
+        <a href="/alunos/listar">Alunos</a>
+        <a href="/cursos/listar">Cursos</a>
+        <a href="/disciplinas/listar">Disciplinas</a>
+        <a href="/professores/listar">Professores</a>
+        <a href="/produtos/listar">Produtos</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Produtos</h1>
+          <p>Lista de produtos cadastrados no sistema.</p>
+        </div>
+        <a class="btn btn-primary" href="/produtos/criar">+ Novo Produto</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Descrição</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Valor</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="produto : ${produtos}">
+              <td>
+                <img
+                  class="avatar"
+                  th:if="${produto.fotoProduto != null}"
+                  th:src="@{/produtos/foto/{id}(id=${produto.idProduto})}"
+                  alt="Foto"
+                />
+                <span
+                  class="avatar-placeholder"
+                  th:if="${produto.fotoProduto == null}"
+                  th:text="${#strings.substring(produto.descricaoProduto,0,1)}"
+                ></span>
+              </td>
+              <td th:text="${produto.descricaoProduto}"></td>
+              <td th:text="${produto.marcaProduto}"></td>
+              <td th:text="${produto.modeloProduto}"></td>
+              <td th:text="${produto.valorProduto}"></td>
+              <td>
+                <div>
+                  <a
+                    class="btn btn-ghost btn-sm"
+                    th:href="@{/produtos/editar/{id}(id=${produto.idProduto})}"
+                    >Editar</a
+                  >
+                  <a
+                    class="btn btn-danger btn-sm"
+                    th:href="@{/produtos/excluir/{id}(id=${produto.idProduto})}"
+                    onclick="
+                      return confirm('Deseja realmente excluir este produto?');
+                    "
+                    >Excluir</a
+                  >
+                </div>
+              </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(produtos)}">
+              <td colspan="6" class="empty-state">
+                Nenhum produto cadastrado ainda.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>
