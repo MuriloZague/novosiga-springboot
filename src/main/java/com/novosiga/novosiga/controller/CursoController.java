@@ -3,6 +3,8 @@ package com.novosiga.novosiga.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/cursos")
@@ -30,11 +33,15 @@ public class CursoController {
         return "redirect:/cursos/listar";
     }
 
-    //Metodo para listar todos os cursos
+    //Metodo para listar cursos com busca e ordenacao
     @GetMapping("/listar")
-    public String listar(Model model) {
-        List<Curso> cursos = cursoService.findAll();
+    public String listar(
+            @RequestParam(required = false) String q,
+            @SortDefault(sort = "nomeCurso") Sort sort,
+            Model model) {
+        List<Curso> cursos = cursoService.buscar(q, sort);
         model.addAttribute("cursos", cursos);
+        model.addAttribute("q", q);
         return "curso/listarCursos";
     }
 

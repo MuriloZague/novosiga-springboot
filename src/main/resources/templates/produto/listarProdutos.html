@@ -28,15 +28,59 @@
         <a class="btn btn-primary" href="/produtos/criar">+ Novo Produto</a>
       </div>
 
+      <form class="toolbar" method="get" th:action="@{/produtos/listar}">
+        <input
+          type="text"
+          name="q"
+          th:value="${q}"
+          placeholder="Buscar por descrição ou modelo..."
+        />
+        <select name="marca">
+          <option value="">Todas as marcas</option>
+          <option
+            th:each="m : ${marcas}"
+            th:value="${m}"
+            th:text="${m}"
+            th:selected="${marca != null and marca == m}"
+          ></option>
+        </select>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+        <a class="btn btn-ghost" th:href="@{/produtos/listar}">Limpar</a>
+      </form>
+
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th>Foto</th>
-              <th>Descrição</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Valor</th>
+              <th>
+                <a
+                  class="sort-link"
+                  th:href="@{/produtos/listar(q=${q}, marca=${marca}, sort='descricaoProduto,' + (${param.sort != null and #strings.contains(param.sort, 'descricaoProduto,asc')} ? 'desc' : 'asc'))}"
+                  >Descrição</a
+                >
+              </th>
+              <th>
+                <a
+                  class="sort-link"
+                  th:href="@{/produtos/listar(q=${q}, marca=${marca}, sort='marcaProduto,' + (${param.sort != null and #strings.contains(param.sort, 'marcaProduto,asc')} ? 'desc' : 'asc'))}"
+                  >Marca</a
+                >
+              </th>
+              <th>
+                <a
+                  class="sort-link"
+                  th:href="@{/produtos/listar(q=${q}, marca=${marca}, sort='modeloProduto,' + (${param.sort != null and #strings.contains(param.sort, 'modeloProduto,asc')} ? 'desc' : 'asc'))}"
+                  >Modelo</a
+                >
+              </th>
+              <th>
+                <a
+                  class="sort-link"
+                  th:href="@{/produtos/listar(q=${q}, marca=${marca}, sort='valorProduto,' + (${param.sort != null and #strings.contains(param.sort, 'valorProduto,asc')} ? 'desc' : 'asc'))}"
+                  >Valor</a
+                >
+              </th>
               <th>Ações</th>
             </tr>
           </thead>

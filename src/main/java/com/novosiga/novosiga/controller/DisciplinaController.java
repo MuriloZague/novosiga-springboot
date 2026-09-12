@@ -3,6 +3,8 @@ package com.novosiga.novosiga.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/disciplinas")
@@ -40,11 +43,21 @@ public class DisciplinaController {
         return "redirect:/disciplinas/listar";
     }
 
-    // Metodo para listar todas as disciplinas
+    // Metodo para listar disciplinas com busca, filtros e ordenacao
     @GetMapping("/listar")
-    public String listar(Model model) {
-        List<Disciplina> disciplinas = disciplinaService.findAll();
+    public String listar(
+            @RequestParam(required = false) String q,
+            @RequestParam(required = false) Integer professorId,
+            @RequestParam(required = false) Integer cursoId,
+            @SortDefault(sort = "nomeDisciplina") Sort sort,
+            Model model) {
+        List<Disciplina> disciplinas = disciplinaService.buscar(q, professorId, cursoId, sort);
         model.addAttribute("disciplinas", disciplinas);
+        model.addAttribute("professores", professorService.findAll());
+        model.addAttribute("cursos", cursoService.findAll());
+        model.addAttribute("q", q);
+        model.addAttribute("professorId", professorId);
+        model.addAttribute("cursoId", cursoId);
         return "disciplina/listarDisciplinas";
     }
 

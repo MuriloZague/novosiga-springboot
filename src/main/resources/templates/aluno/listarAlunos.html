@@ -27,19 +27,57 @@
         <a class="btn btn-primary" href="/alunos/criar">+ Novo Aluno</a>
       </div>
 
+      <form class="toolbar" method="get" th:action="@{/alunos/listar}">
+        <input
+          type="text"
+          name="q"
+          th:value="${q}"
+          placeholder="Buscar por nome, CPF ou cidade..."
+        />
+        <select name="cursoId">
+          <option value="">Todos os cursos</option>
+          <option
+            th:each="curso : ${cursos}"
+            th:value="${curso.idCurso}"
+            th:text="${curso.nomeCurso}"
+            th:selected="${cursoId != null and cursoId == curso.idCurso}"
+          ></option>
+        </select>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+        <a class="btn btn-ghost" th:href="@{/alunos/listar}">Limpar</a>
+      </form>
+
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th>Foto</th>
-              <th>Nome</th>
+              <th>
+                <a
+                  class="sort-link"
+                  th:href="@{/alunos/listar(q=${q}, cursoId=${cursoId}, sort='nomeAluno,' + (${param.sort != null and #strings.contains(param.sort, 'nomeAluno,asc')} ? 'desc' : 'asc'))}"
+                  >Nome</a
+                >
+              </th>
               <th>Endereço</th>
               <th>Bairro</th>
-              <th>Cidade</th>
+              <th>
+                <a
+                  class="sort-link"
+                  th:href="@{/alunos/listar(q=${q}, cursoId=${cursoId}, sort='cidadeAluno,' + (${param.sort != null and #strings.contains(param.sort, 'cidadeAluno,asc')} ? 'desc' : 'asc'))}"
+                  >Cidade</a
+                >
+              </th>
               <th>UF</th>
               <th>CEP</th>
               <th>Telefone</th>
-              <th>CPF</th>
+              <th>
+                <a
+                  class="sort-link"
+                  th:href="@{/alunos/listar(q=${q}, cursoId=${cursoId}, sort='cpfAluno,' + (${param.sort != null and #strings.contains(param.sort, 'cpfAluno,asc')} ? 'desc' : 'asc'))}"
+                  >CPF</a
+                >
+              </th>
               <th>Curso</th>
               <th>Ações</th>
             </tr>
@@ -87,8 +125,8 @@
               </td>
             </tr>
             <tr th:if="${#lists.isEmpty(alunos)}">
-              <td colspan="10" class="empty-state">
-                Nenhum aluno cadastrado ainda.
+              <td colspan="11" class="empty-state">
+                Nenhum aluno encontrado.
               </td>
             </tr>
           </tbody>

@@ -3,6 +3,7 @@ package com.novosiga.novosiga.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.novosiga.novosiga.model.Curso;
@@ -23,6 +24,12 @@ public class CursoService {
     //metodo para listar todos os Cursos
     public List<Curso> findAll(){
         return CursoRepository.findAll();
+    }
+
+    //metodo para buscar cursos com busca por texto e ordenacao
+    public List<Curso> buscar(String q, Sort sort){
+        q = (q == null) ? "" : q.trim();
+        return CursoRepository.buscar(q, sort);
     }
 
     //metodo para excluir um Curso

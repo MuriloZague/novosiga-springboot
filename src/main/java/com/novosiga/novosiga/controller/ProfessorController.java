@@ -3,6 +3,8 @@ package com.novosiga.novosiga.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -48,11 +50,18 @@ public class ProfessorController {
         return "redirect:/professores/listar";
     }
 
-    //Metodo para listar todos os professores
+    //Metodo para listar professores com busca, filtro por graduacao e ordenacao
     @GetMapping("/listar")
-    public String listar(Model model) {
-        List<Professor> professores = professorService.findAll();
+    public String listar(
+            @RequestParam(required = false) String q,
+            @RequestParam(required = false) String graduacao,
+            @SortDefault(sort = "nomeProfessor") Sort sort,
+            Model model) {
+        List<Professor> professores = professorService.buscar(q, graduacao, sort);
         model.addAttribute("professores", professores);
+        model.addAttribute("graduacoes", professorService.findGraduacoes());
+        model.addAttribute("q", q);
+        model.addAttribute("graduacao", graduacao);
         return "professor/listarProfessores";
     }
 

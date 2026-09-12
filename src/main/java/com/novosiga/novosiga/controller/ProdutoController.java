@@ -3,6 +3,8 @@ package com.novosiga.novosiga.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -48,11 +50,18 @@ public class ProdutoController {
         return "redirect:/produtos/listar";
     }
 
-    // Metodo para listar todos os alunos
+    // Metodo para listar produtos com busca, filtro por marca e ordenacao
     @GetMapping("/listar")
-    public String listar(Model model) {
-        List<Produto> produtos = produtoService.findAll();
+    public String listar(
+            @RequestParam(required = false) String q,
+            @RequestParam(required = false) String marca,
+            @SortDefault(sort = "descricaoProduto") Sort sort,
+            Model model) {
+        List<Produto> produtos = produtoService.buscar(q, marca, sort);
         model.addAttribute("produtos", produtos);
+        model.addAttribute("marcas", produtoService.findMarcas());
+        model.addAttribute("q", q);
+        model.addAttribute("marca", marca);
         return "produto/listarProdutos";
     }
 

@@ -32,7 +32,7 @@ public class Produto {
     private String modeloProduto;
 
     @Column(nullable = false, length = 10)
-    private String valorProduto;
+    private Double valorProduto;
 
     @Lob
     private byte[] fotoProduto;
