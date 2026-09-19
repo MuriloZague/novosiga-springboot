@@ -27,7 +27,8 @@ public class PedidoService {
         //Para cada item do pedido
         for(ItemDoPedido item : pedido.getItens()){
             //Buscar o produto no BD
-            Produto produto = produtoRepository.findById(item.getProduto().getIdProduto()).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+            Produto produto = produtoRepository.findById(item.getProduto().getIdProduto()).
+            orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
             //Define o produto completo no item
             item.setProduto(produto);
