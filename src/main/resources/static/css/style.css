@@ -411,6 +411,13 @@ tbody tr:hover {
   gap: 12px;
   margin-top: 28px;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.total-pedido {
+  margin-right: auto;
+  font-size: 1.05rem;
+  color: var(--text);
 }
 
 @media (max-width: 640px) {
