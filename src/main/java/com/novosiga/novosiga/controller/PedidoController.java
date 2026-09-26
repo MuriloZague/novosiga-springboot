@@ -17,8 +17,6 @@ import com.novosiga.novosiga.service.AlunoService;
 import com.novosiga.novosiga.service.PedidoService;
 import com.novosiga.novosiga.service.ProdutoService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 @RequestMapping("/pedidos")
