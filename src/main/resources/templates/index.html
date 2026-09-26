@@ -10,78 +10,25 @@
     <header class="navbar">
       <div class="brand"><a href="/novosiga">NOVO SIGA</a></div>
       <nav>
-        <a href="/novosiga">Início</a>
-        <a href="/alunos/listar">Alunos</a>
-        <a href="/cursos/listar">Cursos</a>
-        <a href="/disciplinas/listar">Disciplinas</a>
-        <a href="/professores/listar">Professores</a>
-        <a href="/produtos/listar">Produtos</a>
-        <a href="/pedidos/criar">Pedidos</a>
+        <a href="/login">Entrar</a>
+        <a href="/usuarios/criar">Cadastrar-se</a>
       </nav>
     </header>
 
     <main class="container">
-      <section class="hero">
-        <h1>Sistema de Gestão Acadêmica - NOVO SIGA</h1>
-        <p>
-          Gerencie alunos, cursos, disciplinas e professores em um só lugar.
-        </p>
-      </section>
+      <div class="auth-card auth-card-wide">
+        <section class="hero">
+          <h1>Sistema NOVO SIGA</h1>
+          <p>
+            Gerencie alunos, cursos, disciplinas e professores em um só lugar.
+          </p>
+        </section>
 
-      <section class="card-grid">
-        <article class="card">
-          <h2>Alunos</h2>
-          <p>Cadastre, consulte e mantenha os dados dos estudantes.</p>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="/alunos/listar">Gerenciar</a>
-            <a class="btn btn-outline" href="/alunos/criar">Novo</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h2>Cursos</h2>
-          <p>Organize os cursos oferecidos e suas cargas horárias.</p>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="/cursos/listar">Gerenciar</a>
-            <a class="btn btn-outline" href="/cursos/criar">Novo</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h2>Disciplinas</h2>
-          <p>Administre as disciplinas e suas respectivas siglas.</p>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="/disciplinas/listar">Gerenciar</a>
-            <a class="btn btn-outline" href="/disciplinas/criar">Nova</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h2>Professores</h2>
-          <p>Controle o corpo docente e suas informações de contato.</p>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="/professores/listar">Gerenciar</a>
-            <a class="btn btn-outline" href="/professores/criar">Novo</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h2>Produtos</h2>
-          <p>Cadastre, consulte e mantenha os produtos do sistema.</p>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="/produtos/listar">Gerenciar</a>
-            <a class="btn btn-outline" href="/produtos/criar">Novo</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h2>Pedidos</h2>
-          <p>Monte pedidos de alunos e adicione produtos ao carrinho.</p>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="/pedidos/criar">Novo Pedido</a>
-          </div>
-        </article>
-      </section>
+        <div class="auth-actions">
+          <a class="btn btn-primary" href="/login">Acessar sistema</a>
+          <a class="btn btn-outline" href="/usuarios/criar">Cadastrar-se</a>
+        </div>
+      </div>
     </main>
   </body>
 </html>

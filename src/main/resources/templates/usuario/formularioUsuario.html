@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Usuário — NOVO SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand"><a href="/novosiga">NOVO SIGA</a></div>
+      <nav>
+        <a href="/novosiga">Início</a>
+        <a href="/login">Entrar</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Cadastro de Usuário</h1>
+          <p>Preencha seus dados para acessar o sistema.</p>
+        </div>
+        <a class="btn btn-ghost" href="/novosiga">← Voltar</a>
+      </div>
+
+      <div class="form-card">
+        <form
+          th:action="@{/usuarios/salvar}"
+          method="post"
+          th:object="${usuario}"
+        >
+          <input type="hidden" th:field="*{idUsuario}" />
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="nomeUsuario">Nome</label>
+              <input type="text" th:field="*{nomeUsuario}" required />
+            </div>
+            <div class="form-group full">
+              <label for="cpfUsuario">CPF</label>
+              <input type="text" th:field="*{cpfUsuario}" required />
+            </div>
+            <div class="form-group">
+              <label for="loginUsuario">Login</label>
+              <input
+                type="text"
+                th:field="*{loginUsuario}"
+                autocomplete="username"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="senhaUsuario">Senha</label>
+              <input
+                type="password"
+                th:field="*{senhaUsuario}"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <a class="btn btn-ghost" href="/novosiga">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar usuário</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
