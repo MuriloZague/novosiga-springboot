@@ -24,6 +24,8 @@ public class AlunoService {
     }
 
     //metodo para listar todos os alunos
+    //transacao readOnly necessaria para ler o LOB (fotoAluno) no Postgres
+    @Transactional(readOnly = true)
     public List<Aluno> findAll(){
         return alunoRepository.findAll();
     }

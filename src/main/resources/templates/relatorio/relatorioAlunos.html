@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatório de Alunos — NOVO SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand"><a href="/home">NOVO SIGA</a></div>
+      <nav>
+        <a href="/home">Início</a>
+        <a href="/alunos/listar">Alunos</a>
+        <a href="/cursos/listar">Cursos</a>
+        <a href="/disciplinas/listar">Disciplinas</a>
+        <a href="/professores/listar">Professores</a>
+        <a href="/produtos/listar">Produtos</a>
+        <a href="/pedidos/criar">Pedidos</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Relatório de Alunos</h1>
+          <p>Alunos cadastrados com CPF e telefone.</p>
+        </div>
+        <a class="btn btn-primary" href="/relatorios/alunos/pdf" target="_blank">Gerar PDF</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Telefone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="aluno : ${alunos}">
+              <td th:text="${aluno.nomeAluno}"></td>
+              <td th:text="${aluno.cpfAluno}"></td>
+              <td th:text="${aluno.telefoneAluno}"></td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(alunos)}">
+              <td colspan="3" class="empty-state">
+                Nenhum aluno cadastrado ainda.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>
