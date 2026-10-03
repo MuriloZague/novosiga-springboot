@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alunos por Curso — NOVO SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand"><a href="/home">NOVO SIGA</a></div>
+      <nav>
+        <a href="/home">Início</a>
+        <a href="/alunos/listar">Alunos</a>
+        <a href="/cursos/listar">Cursos</a>
+        <a href="/disciplinas/listar">Disciplinas</a>
+        <a href="/professores/listar">Professores</a>
+        <a href="/produtos/listar">Produtos</a>
+        <a href="/pedidos/criar">Pedidos</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Alunos por Curso</h1>
+          <p>Alunos matriculados, agrupados pelo curso.</p>
+        </div>
+        <a class="btn btn-ghost" href="/alunos/listar">Voltar para Alunos</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Curso</th>
+              <th>Aluno</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="aluno : ${alunos}">
+              <td th:text="${aluno.nomeCurso}"></td>
+              <td th:text="${aluno.nomeAluno}"></td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(alunos)}">
+              <td colspan="2" class="empty-state">
+                Nenhum aluno matriculado em curso ainda.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

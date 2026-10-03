@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.novosiga.novosiga.dto.AlunoCursoDTO;
 import com.novosiga.novosiga.model.Aluno;
 import com.novosiga.novosiga.model.Curso;
 import com.novosiga.novosiga.service.AlunoService;
@@ -103,6 +104,13 @@ public class AlunoController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok().contentType(MediaType.parseMediaType(aluno.getTipoFoto())).body(aluno.getFotoAluno());
+    }
+    
+    @GetMapping("/alunos-por-curso")
+    public String listarAlunosPorCurso(Model model) {
+        List<AlunoCursoDTO> alunos = alunoService.listarAlunosPorCurso();
+        model.addAttribute("alunos", alunos);
+        return "aluno/alunosPorCurso";
     }
     
 

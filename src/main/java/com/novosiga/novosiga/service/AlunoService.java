@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.novosiga.novosiga.dto.AlunoCursoDTO;
 import com.novosiga.novosiga.model.Aluno;
 import com.novosiga.novosiga.repository.AlunoRepository;
 
@@ -43,5 +44,10 @@ public class AlunoService {
     //metodo para buscar o aluno pelo ID
     public Aluno findById(Integer id){
         return alunoRepository.findById(id).orElse(null);
+    }
+
+    //metodo para listar todos os alunos ordenados por curso
+    public List<AlunoCursoDTO> listarAlunosPorCurso(){
+        return alunoRepository.listarAlunosPorCurso();
     }
 }
